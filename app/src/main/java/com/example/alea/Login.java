@@ -16,49 +16,53 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.VolleyLog;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-import org.json.JSONArray;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.util.Log;
 import android.content.Intent;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     Button button;
-    EditText textname,isiname,textpass;
+    private EditText textname,textpass;
     String server_url;
-    String name,pass,dataname;
     ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.buttonView);
+        setContentView(R.layout.activity_login);
+        button = (Button) findViewById(R.id.btnLogin);
         textname = (EditText) findViewById(R.id.textname);
         textpass = (EditText) findViewById(R.id.textpass);
-        isiname = (EditText) findViewById(R.id.textisiname);
-        server_url = "https://aldry.000webhostapp.com/tampilSemuaPgw.php";
+        server_url = "https://aldry.000webhostapp.com/Login.php";
         pd = new ProgressDialog(this);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                name = textname.getText().toString().trim();
-                pass = textpass.getText().toString().trim();
-                simpanData(name,pass);
+                String name = textname.getText().toString().trim();
+                String pass = textpass.getText().toString().trim();
+
+                if (!name.isEmpty() && !pass.isEmpty() ) {
+                    simpanData(name, pass);
+                } else if (name.isEmpty()) {
+                    textname.setError("user tidak boleh kosong");
+                    textname.requestFocus();
+                } else if (pass.isEmpty()) {
+                    textpass.setError("pass tidak boleh kosong");
+                    textpass.requestFocus();
+                }
             }
         });
     }
 
     private void simpanData(final String name,final String pass) {
-        final RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+        final RequestQueue requestQueue = Volley.newRequestQueue(Login.this);
 
         pd.setCancelable(false);
         pd.setMessage("Harap Menunggu...");
@@ -70,14 +74,29 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.d("response", response.toString());
                         hideDialog();
-                        Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
-                        requestQueue.stop();
+
+                        try {
+                            JSONObject jObject = new JSONObject(response);
+                            String pesan = jObject.getString("pesan");
+                            String hasil = jObject.getString("result");
+                            if (hasil.equalsIgnoreCase("true")) {
+                                Intent explicit = new Intent(Login.this, Dashboard.class);
+                                startActivity(explicit);
+                                requestQueue.stop();
+                            } else {
+                                Toast.makeText(Login.this, pesan, Toast.LENGTH_SHORT).show();
+                                requestQueue.stop();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(Login.this, "Error JSON", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d("ERROR", error.getMessage());
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -85,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("name", name);
                 param.put("pass", pass);
-                isiname.setText(name);
                 return param;
             }
         };
