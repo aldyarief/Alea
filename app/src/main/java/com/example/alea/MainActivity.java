@@ -31,9 +31,9 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
-    EditText textname;
+    EditText textname,isiname,textpass;
     String server_url;
-    String name;
+    String name,pass,dataname;
     ProgressDialog pd;
 
     @Override
@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button = (Button) findViewById(R.id.buttonView);
         textname = (EditText) findViewById(R.id.textname);
+        textpass = (EditText) findViewById(R.id.textpass);
+        isiname = (EditText) findViewById(R.id.textisiname);
         server_url = "https://aldry.000webhostapp.com/tampilSemuaPgw.php";
         pd = new ProgressDialog(this);
 
@@ -49,12 +51,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 name = textname.getText().toString().trim();
-                simpanData(name);
+                pass = textpass.getText().toString().trim();
+                simpanData(name,pass);
             }
         });
     }
 
-    private void simpanData(final String text) {
+    private void simpanData(final String name,final String pass) {
         final RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
 
         pd.setCancelable(false);
@@ -81,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("name", name);
+                param.put("pass", pass);
+                isiname.setText(name);
                 return param;
             }
         };
