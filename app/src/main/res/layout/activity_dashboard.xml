@@ -33,7 +33,7 @@
                         android:layout_toRightOf="@+id/image2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Daftar Pegawai" />
+                        android:text="Master User" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
@@ -52,7 +52,7 @@
                         android:id="@+id/image1"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@mipmap/ic_kalkulator"
+                        android:background="@mipmap/ic_barang"
                         android:layout_marginRight="20dp"/>
 
                     <TextView
@@ -60,7 +60,7 @@
                         android:layout_toRightOf="@+id/image1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kalkulator Gaji" />
+                        android:text="Master Barang" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

@@ -51,10 +51,10 @@ public class Login extends AppCompatActivity {
                 if (!name.isEmpty() && !pass.isEmpty() ) {
                     simpanData(name, pass);
                 } else if (name.isEmpty()) {
-                    textname.setError("user tidak boleh kosong");
+                    textname.setError("username tidak boleh kosong");
                     textname.requestFocus();
                 } else if (pass.isEmpty()) {
-                    textpass.setError("pass tidak boleh kosong");
+                    textpass.setError("password tidak boleh kosong");
                     textpass.requestFocus();
                 }
             }
