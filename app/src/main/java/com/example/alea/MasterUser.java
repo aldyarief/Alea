@@ -86,6 +86,8 @@ public class MasterUser extends AppCompatActivity {
                             } else {
                                 Toast.makeText(MasterUser.this, pesan, Toast.LENGTH_SHORT).show();
                                 requestQueue.stop();
+                                Eduser.getText().clear();
+                                EdPass.getText().clear();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
