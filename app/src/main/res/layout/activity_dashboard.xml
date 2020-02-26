@@ -20,19 +20,21 @@
                 <RelativeLayout
                     android:padding="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layoutuser">
                     <ImageView
-                        android:id="@+id/image2"
+                        android:id="@+id/imageuser"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="@mipmap/ic_pegawai"
                         android:layout_marginRight="20dp"/>
 
                     <TextView
-                        android:id="@+id/txCoba"
-                        android:layout_toRightOf="@+id/image2"
+                        android:id="@+id/txUser"
+                        android:layout_toRightOf="@+id/imageuser"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:text="Master User" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -47,19 +49,21 @@
                 <RelativeLayout
                     android:padding="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layoutbarang">
                     <ImageView
-                        android:id="@+id/image1"
+                        android:id="@+id/imagebarang"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="@mipmap/ic_barang"
                         android:layout_marginRight="20dp"/>
 
                     <TextView
-                        android:id="@+id/txKalkulator"
-                        android:layout_toRightOf="@+id/image1"
+                        android:id="@+id/txbarang"
+                        android:layout_toRightOf="@+id/imagebarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:text="Master Barang" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
