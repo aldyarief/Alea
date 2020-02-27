@@ -21,6 +21,9 @@ public class user extends AppCompatActivity {
         txtambahuser = (TextView) findViewById(R.id.txtambahuser);
         imagetambahuser = (ImageView) findViewById(R.id.imagetambahuser);
         layouttambahuser = (RelativeLayout) findViewById(R.id.layouttambahuser);
+        txedituser = (TextView) findViewById(R.id.txedituser);
+        imageedituser = (ImageView) findViewById(R.id.imageedituser);
+        layoutedituser = (RelativeLayout) findViewById(R.id.layoutedituser);
 
         txtambahuser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +48,31 @@ public class user extends AppCompatActivity {
                 startActivity(explicit);
             }
         });
+
+        txedituser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent explicit = new Intent(user.this, EditUser.class);
+                startActivity(explicit);
+            }
+        });
+
+        imageedituser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent explicit = new Intent(user.this, EditUser.class);
+                startActivity(explicit);
+            }
+        });
+
+        layoutedituser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent explicit = new Intent(user.this, EditUser.class);
+                startActivity(explicit);
+            }
+        });
+
 
 
     }
