@@ -26,7 +26,7 @@ public class Dashboard extends AppCompatActivity {
         txuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent explicit = new Intent(Dashboard.this, MasterUser.class);
+                Intent explicit = new Intent(Dashboard.this, user.class);
                 startActivity(explicit);
             }
         });
@@ -34,7 +34,7 @@ public class Dashboard extends AppCompatActivity {
         imageuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent explicit = new Intent(Dashboard.this, MasterUser.class);
+                Intent explicit = new Intent(Dashboard.this, user.class);
                 startActivity(explicit);
             }
         });
@@ -42,7 +42,7 @@ public class Dashboard extends AppCompatActivity {
         layoutuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent explicit = new Intent(Dashboard.this, MasterUser.class);
+                Intent explicit = new Intent(Dashboard.this, user.class);
                 startActivity(explicit);
             }
         });

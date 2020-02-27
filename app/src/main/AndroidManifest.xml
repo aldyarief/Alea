@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MasterUser"></activity>
+        <activity android:name=".EditUser"></activity>
+        <activity android:name=".user" />
+        <activity android:name=".MasterUser" />
         <activity android:name=".Dashboard" />
         <activity android:name=".Login">
             <intent-filter>
