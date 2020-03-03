@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent" android:paddingLeft="16dp"
@@ -9,33 +9,43 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nama Pegawai" />
+        android:text="Username"
+        android:id="@+id/textName"/>
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextName" />
+        android:id="@+id/editTextName"
+        android:layout_below="@id/textName"/>
+
+    <Button
+        android:id="@+id/buttonData"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editTextName"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="0dp"
+        android:text="Ambil Data"
+        android:layout_below="@id/textName"/>
 
     <TextView
+        android:id="@+id/textPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password" />
+        android:text="Password"
+        android:layout_below="@id/editTextName"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextPass" />
+        android:id="@+id/editTextPass"
+        android:layout_below="@id/textPass"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Update Pegawai"
-        android:id="@+id/buttonUpdate" />
+        android:id="@+id/buttonUpdate"
+        android:layout_below="@id/editTextPass"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hapus Pegawai"
-        android:id="@+id/buttonDelete" />
-
-</LinearLayout>
+</RelativeLayout>

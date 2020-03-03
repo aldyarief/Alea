@@ -38,9 +38,9 @@ public class EditUser extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextPass;
     private Button buttonUpdate;
-    private Button buttonDelete;
+    private Button buttonData;
 
-    String server_url,nama,passe;
+    String server_url, nama, passe;
     ProgressDialog pd;
 
 
@@ -52,31 +52,50 @@ public class EditUser extends AppCompatActivity {
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextPass = (EditText) findViewById(R.id.editTextPass);
         buttonUpdate = (Button) findViewById(R.id.buttonUpdate);
-        buttonDelete = (Button) findViewById(R.id.buttonDelete);
+        buttonData = (Button) findViewById(R.id.buttonData);
         server_url = "https://aldry.000webhostapp.com/showuser.php";
         pd = new ProgressDialog(this);
-        nama="aldry";
-        getEmployee(nama);
-    }
 
-    private void getEmployee(final String nama) {
+        buttonData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = editTextName.getText().toString().trim();
+
+                if (!name.isEmpty()) {
+                    AmbilData(name);
+                } else if (name.isEmpty()) {
+                    editTextName.setError("username tidak boleh kosong");
+                    editTextName.requestFocus();
+                }
+
+            }
+        });
+    }
+    private void AmbilData(final String name) {
         final RequestQueue requestQueue = Volley.newRequestQueue(EditUser.this);
 
         pd.setCancelable(false);
         pd.setMessage("Harap Menunggu...");
         showDialog();
 
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, server_url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d("response", response.toString());
                         hideDialog();
+
                         try {
-                            JSONObject json = jsonParser.getJSONFromUrl(server_url, null);
-                            editTextName.setText(jsonPost.getString("user_name"));
+                            JSONObject jObject = new JSONObject(response);
+                            String hasil = jObject.getString("result");
+                            String pass = jObject.getString("pass");
+                            if (hasil.equalsIgnoreCase("true")) {
+                                editTextPass.setText(pass);
+                                requestQueue.stop();
+                            } else {
+                                Toast.makeText(EditUser.this, "Data Kosong", Toast.LENGTH_SHORT).show();
+                                requestQueue.stop();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(EditUser.this, "Error JSON", Toast.LENGTH_SHORT).show();
@@ -92,7 +111,7 @@ public class EditUser extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
-                param.put("user_name", nama);
+                param.put("name", name);
                 return param;
             }
         };
@@ -111,6 +130,10 @@ public class EditUser extends AppCompatActivity {
         if (pd.isShowing())
             pd.dismiss();
     }
+
+
+
+
 
 
 }
