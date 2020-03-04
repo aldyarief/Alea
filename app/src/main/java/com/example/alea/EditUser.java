@@ -37,10 +37,11 @@ import java.util.Map;
 public class EditUser extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextPass;
+    private EditText editTextCoba;
     private Button buttonUpdate;
     private Button buttonData;
 
-    String server_url, nama, passe;
+    String server_url, name,result,server_edit;
     ProgressDialog pd;
 
 
@@ -51,16 +52,16 @@ public class EditUser extends AppCompatActivity {
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextPass = (EditText) findViewById(R.id.editTextPass);
+        editTextCoba = (EditText) findViewById(R.id.editTextCoba);
         buttonUpdate = (Button) findViewById(R.id.buttonUpdate);
         buttonData = (Button) findViewById(R.id.buttonData);
-        server_url = "https://aldry.000webhostapp.com/showuser.php";
         pd = new ProgressDialog(this);
 
         buttonData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                server_url = "https://aldry.000webhostapp.com/showuser.php";
                 String name = editTextName.getText().toString().trim();
-
                 if (!name.isEmpty()) {
                     AmbilData(name);
                 } else if (name.isEmpty()) {
@@ -68,6 +69,15 @@ public class EditUser extends AppCompatActivity {
                     editTextName.requestFocus();
                 }
 
+            }
+        });
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                server_edit = "https://aldry.000webhostapp.com/insertuser.php";
+                String status = editTextCoba.getText().toString().trim();
+                EditData(status);
             }
         });
     }
@@ -93,7 +103,7 @@ public class EditUser extends AppCompatActivity {
                                 editTextPass.setText(pass);
                                 requestQueue.stop();
                             } else {
-                                Toast.makeText(EditUser.this, "Data Kosong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EditUser.this, "Data Kosong / Data tidak ada", Toast.LENGTH_SHORT).show();
                                 requestQueue.stop();
                             }
                         } catch (JSONException e) {
@@ -112,6 +122,54 @@ public class EditUser extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("name", name);
+                return param;
+            }
+        };
+
+        requestQueue.add(stringRequest);
+    }
+
+
+    private void EditData(final String status) {
+        final RequestQueue requestQueue = Volley.newRequestQueue(EditUser.this);
+
+        pd.setCancelable(false);
+        pd.setMessage("Harap Menunggu...");
+        showDialog();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, server_edit,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("response", response.toString());
+                        hideDialog();
+                        try {
+                            JSONObject jObject = new JSONObject(response);
+                            String hasil = jObject.getString("result");
+                            if (hasil.equalsIgnoreCase("ada")) {
+                                editTextCoba.setText(hasil);
+                                requestQueue.stop();
+                            } else {
+                                Toast.makeText(EditUser.this, hasil, Toast.LENGTH_SHORT).show();
+                                requestQueue.stop();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(EditUser.this, "Error JSON", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("ERROR", error.getMessage());
+                Toast.makeText(EditUser.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("result", status);
                 return param;
             }
         };

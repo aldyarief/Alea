@@ -48,4 +48,10 @@
         android:id="@+id/buttonUpdate"
         android:layout_below="@id/editTextPass"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextCoba"
+        android:layout_below="@id/buttonUpdate"/>
+
 </RelativeLayout>

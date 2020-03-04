@@ -49,9 +49,10 @@ public class MasterUser extends AppCompatActivity {
             public void onClick(View v) {
                 String name = Eduser.getText().toString().trim();
                 String pass = EdPass.getText().toString().trim();
+                String status = "insert";
 
                 if (!name.isEmpty() && !pass.isEmpty() ) {
-                    simpanData(name, pass);
+                    simpanData(name,pass,status);
                 } else if (name.isEmpty()) {
                     Eduser.setError("username tidak boleh kosong");
                     Eduser.requestFocus();
@@ -62,7 +63,7 @@ public class MasterUser extends AppCompatActivity {
             }
         });
     }
-    private void simpanData(final String name,final String pass) {
+    private void simpanData(final String name,final String pass,final String status) {
         final RequestQueue requestQueue = Volley.newRequestQueue(MasterUser.this);
 
         pd.setCancelable(false);
@@ -106,6 +107,7 @@ public class MasterUser extends AppCompatActivity {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("name", name);
                 param.put("pass", pass);
+                param.put("pass", status);
                 return param;
             }
         };
