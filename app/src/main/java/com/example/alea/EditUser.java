@@ -145,14 +145,10 @@ public class EditUser extends AppCompatActivity {
                         hideDialog();
                         try {
                             JSONObject jObject = new JSONObject(response);
-                            String hasil = jObject.getString("result");
-                            if (hasil.equalsIgnoreCase("ada")) {
-                                editTextCoba.setText(hasil);
+                            String hasilnya = jObject.getString("result");
+
+                                Toast.makeText(EditUser.this, hasilnya, Toast.LENGTH_SHORT).show();
                                 requestQueue.stop();
-                            } else {
-                                Toast.makeText(EditUser.this, hasil, Toast.LENGTH_SHORT).show();
-                                requestQueue.stop();
-                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -188,10 +184,5 @@ public class EditUser extends AppCompatActivity {
         if (pd.isShowing())
             pd.dismiss();
     }
-
-
-
-
-
 
 }
