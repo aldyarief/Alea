@@ -40,7 +40,6 @@ public class MasterUser extends AppCompatActivity {
         Eduser = (EditText) findViewById(R.id.EdUserName);
         EdPass = (EditText) findViewById(R.id.EdPassword);
         btntambah = (Button) findViewById(R.id.buttonAdd);
-        btnview = (Button) findViewById(R.id.buttonView);
         server_url = "https://aldry.000webhostapp.com/insertuser.php";
         pd = new ProgressDialog(this);
 

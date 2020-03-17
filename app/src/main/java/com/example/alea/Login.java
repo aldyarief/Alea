@@ -27,7 +27,7 @@ import android.util.Log;
 import android.content.Intent;
 
 public class Login extends AppCompatActivity {
-    Button button;
+    Button button,button2;
     private EditText textname,textpass;
     String server_url;
     ProgressDialog pd;
@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         button = (Button) findViewById(R.id.btnLogin);
+        button2 = (Button) findViewById(R.id.btnTutup);
         textname = (EditText) findViewById(R.id.textname);
         textpass = (EditText) findViewById(R.id.textpass);
         server_url = "https://aldry.000webhostapp.com/Login.php";
@@ -57,6 +58,13 @@ public class Login extends AppCompatActivity {
                     textpass.setError("password tidak boleh kosong");
                     textpass.requestFocus();
                 }
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

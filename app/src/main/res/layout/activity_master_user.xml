@@ -1,44 +1,73 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent" android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:background="@drawable/back"
     android:paddingBottom="16dp" tools:context=".MasterUser">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="UserName" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/transparent"
+        android:elevation="4dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/EdUserName" />
+        <TextView
+            android:id="@+id/txUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="UserName" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:layout_below="@+id/txUser"
+            android:id="@+id/EdUserName" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/EdPassword"
-        android:inputType="textPassword"/>
+        <TextView
+            android:id="@+id/txPass"
+            android:layout_below="@+id/EdUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="Password" />
 
+        <EditText
+            android:layout_below="@+id/txPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:id="@+id/EdPassword"
+            android:inputType="textPassword"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tambah User"
-        android:id="@+id/buttonAdd" />
+        <Button
+            android:layout_below="@+id/EdPassword"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#e8e821"
+            android:text="Tambah"
+            android:id="@+id/buttonAdd" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="List User"
-        android:id="@+id/buttonView" />
-
-
-</LinearLayout>
+        <Button
+            android:layout_below="@+id/EdPassword"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:text="Tutup"
+            android:id="@+id/buttonClose" />
+    </RelativeLayout>
+</RelativeLayout>

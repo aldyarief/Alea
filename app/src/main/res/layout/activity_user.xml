@@ -4,6 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     tools:context=".user">
 
     <LinearLayout
@@ -24,7 +25,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@mipmap/ic_tambahuser"
-                    android:layout_marginRight="20dp"/>
+                    android:layout_marginRight="5dp"/>
 
                 <TextView
                     android:id="@+id/txtambahuser"
@@ -50,7 +51,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@mipmap/ic_useredit"
-                    android:layout_marginRight="20dp"/>
+                    android:layout_marginRight="5dp"/>
 
                 <TextView
                     android:id="@+id/txedituser"

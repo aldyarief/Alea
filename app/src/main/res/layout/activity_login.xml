@@ -4,6 +4,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     tools:context=".Login">
 
     <RelativeLayout
@@ -12,36 +13,56 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="70dp"
-        android:background="#808080"
+        android:background="@android:color/transparent"
         android:elevation="4dp"
         android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:padding="20dp"
-        android:id="@+id/relativeLayout">
+        android:padding="20dp">
 
         <EditText
             android:id="@+id/textname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_person"
+            android:hint="Username"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             tools:layout_editor_absoluteX="179dp"
-            tools:layout_editor_absoluteY="124dp"
-            android:drawableLeft="@mipmap/ic_person"/>
+            tools:layout_editor_absoluteY="124dp" />
 
         <EditText
             android:id="@+id/textpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="179dp"
-            tools:layout_editor_absoluteY="124dp"
+            android:layout_below="@+id/textname"
             android:drawableLeft="@mipmap/ic_password"
+            android:hint="Password"
             android:inputType="textPassword"
-            android:layout_below="@+id/textname"/>
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:backgroundTint="#FFFFFF" />
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="124dp" />
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:text="Login"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#e8e821"
+            android:layout_below="@+id/textpass" />
+        <Button
+            android:id="@+id/btnTutup"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="Keluar"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#FFFFFF"
             android:layout_below="@+id/textpass" />
 
     </RelativeLayout>

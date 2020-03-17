@@ -4,70 +4,117 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     tools:context=".Dashboard">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:baselineAligned="false"
+        android:id="@+id/kotak1"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:layout_weight="1"
+
+            android:background="@android:color/transparent">
+
                 <RelativeLayout
-                    android:padding="20dp"
+                    android:id="@+id/layoutuser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/layoutuser">
+                    android:background="@android:color/transparent"
+                    android:padding="20dp">
+
                     <ImageView
                         android:id="@+id/imageuser"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@mipmap/ic_pegawai"
-                        android:layout_marginRight="20dp"/>
+                        android:layout_marginRight="5dp"
+                        android:background="@mipmap/ic_pegawai" />
 
                     <TextView
                         android:id="@+id/txUser"
-                        android:layout_toRightOf="@+id/imageuser"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/imageuser"
                         android:text="Master User" />
                 </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:layout_weight="1">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
                 <RelativeLayout
-                    android:padding="20dp"
+                    android:id="@+id/layoutbarang"
                     android:layout_width="match_parent"
+                    android:background="@android:color/transparent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/layoutbarang">
+                    android:padding="20dp">
+
                     <ImageView
                         android:id="@+id/imagebarang"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@mipmap/ic_barang"
-                        android:layout_marginRight="20dp"/>
+                        android:layout_marginRight="5dp"
+                        android:background="@mipmap/ic_barang" />
 
                     <TextView
                         android:id="@+id/txbarang"
-                        android:layout_toRightOf="@+id/imagebarang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/imagebarang"
                         android:text="Master Barang" />
                 </RelativeLayout>
-            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:baselineAligned="false"
+        android:id="@+id/kotak2"
+        android:layout_below="@+id/kotak1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:background="@android:color/transparent">
+
+            <RelativeLayout
+                android:id="@+id/layoutuse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/imageuse"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@mipmap/ic_pegawai" />
+
+                <TextView
+                    android:id="@+id/txUse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/imageuse"
+                    android:text="Master User" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
