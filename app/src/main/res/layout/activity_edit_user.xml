@@ -4,54 +4,77 @@
     android:layout_height="match_parent" android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:background="@drawable/back"
     android:paddingBottom="16dp" tools:context=".EditUser">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Username"
-        android:id="@+id/textName"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/transparent"
+        android:elevation="4dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="20dp">
 
     <EditText
-        android:layout_width="230dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTextName"
-        android:layout_below="@id/textName"/>
+        android:textColor="#FFFFFF"
+        android:hint="Password Lama"
+        android:textColorHint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_password"
+        android:backgroundTint="#FFFFFF"/>
 
-    <Button
-        android:id="@+id/buttonData"
-        android:layout_width="116dp"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editTextName"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="0dp"
-        android:text="Ambil Data"
-        android:layout_below="@id/textName"/>
-
-    <TextView
-        android:id="@+id/textPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:layout_below="@id/editTextName"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTextPass"
-        android:layout_below="@id/textPass"/>
+        android:layout_below="@id/editTextName"
+        android:drawableLeft="@drawable/ic_password"
+        android:hint="Password Baru"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FFFFFF"/>
 
-    <Button
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update Pegawai"
-        android:id="@+id/buttonUpdate"
-        android:layout_below="@id/editTextPass"/>
+        android:layout_below="@+id/editTextPass"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="30dp"
+        android:text="Show Password"
+        android:buttonTint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextCoba"
-        android:layout_below="@id/buttonUpdate"/>
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#e8e821"
+            android:layout_below="@+id/checkBox1" />
+        <Button
+            android:id="@+id/btnTutup"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Keluar"
+            android:layout_marginLeft="148dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#FFFFFF"
+            android:layout_below="@+id/checkBox1" />
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

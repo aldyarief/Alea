@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <group android:checkableBehavior="all">
+        <item android:id="@+id/menu_user"
+            android:title="Menu User"/>
+        <item android:id="@+id/menu_barang"
+            android:title="Menu Barang"/>
+        <item android:id="@+id/menu_pembelian"
+            android:title="Menu Pembelian"/>
+        <item android:id="@+id/menu_jual"
+            android:title="Menu Penjualan"/>
+    </group>
+
+
+
+</menu>

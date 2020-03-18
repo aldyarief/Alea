@@ -50,7 +50,7 @@
                     android:id="@+id/imageedituser"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@mipmap/ic_useredit"
+                    android:background="@mipmap/ic_pass"
                     android:layout_marginRight="5dp"/>
 
                 <TextView
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="Edit User" />
+                    android:text="Ganti Password" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

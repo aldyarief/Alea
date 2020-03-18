@@ -20,15 +20,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
+import android.annotation.SuppressLint;
 
 public class MasterUser extends AppCompatActivity {
-    Button btntambah,btnview;
+    Button btntambah,btntutup,hakakses;
     EditText Eduser,EdPass;
     String server_url;
     ProgressDialog pd;
@@ -40,6 +44,8 @@ public class MasterUser extends AppCompatActivity {
         Eduser = (EditText) findViewById(R.id.EdUserName);
         EdPass = (EditText) findViewById(R.id.EdPassword);
         btntambah = (Button) findViewById(R.id.buttonAdd);
+        btntutup = (Button) findViewById(R.id.buttonClose);
+        hakakses = (Button) findViewById(R.id.hakakses);
         server_url = "https://aldry.000webhostapp.com/insertuser.php";
         pd = new ProgressDialog(this);
 
@@ -59,6 +65,22 @@ public class MasterUser extends AppCompatActivity {
                     EdPass.requestFocus();
                 }
             }
+        });
+
+        hakakses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            showPopupMenu(v);
+            }
+        });
+
+        btntutup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent explicit = new Intent(MasterUser.this, user.class);
+                startActivity(explicit);
+            }
+
         });
     }
     private void simpanData(final String name,final String pass) {
@@ -122,5 +144,14 @@ public class MasterUser extends AppCompatActivity {
     private void hideDialog() {
         if (pd.isShowing())
             pd.dismiss();
+    }
+
+
+    @SuppressLint("ResourceType")
+    private void showPopupMenu(View v) {
+        PopupMenu popupMenu = new PopupMenu(this, v);
+        //menampilkan layout menu_popup.xml
+        popupMenu.inflate(R.layout.hakakses);
+        popupMenu.show();
     }
 }

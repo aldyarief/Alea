@@ -18,6 +18,7 @@ import com.android.volley.VolleyLog;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,12 +26,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.util.Log;
 import android.content.Intent;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
 
 public class Login extends AppCompatActivity {
     Button button,button2;
+    CheckBox password;
     private EditText textname,textpass;
     String server_url;
     ProgressDialog pd;
+    private Button imb_popupMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +49,7 @@ public class Login extends AppCompatActivity {
         button2 = (Button) findViewById(R.id.btnTutup);
         textname = (EditText) findViewById(R.id.textname);
         textpass = (EditText) findViewById(R.id.textpass);
+        password = (CheckBox) findViewById(R.id.checkBox1);
         server_url = "https://aldry.000webhostapp.com/Login.php";
         pd = new ProgressDialog(this);
 
@@ -65,6 +75,20 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        password.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // TODO Auto-generated method stub
+                if (!isChecked) {
+                    textpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    textpass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+
             }
         });
     }

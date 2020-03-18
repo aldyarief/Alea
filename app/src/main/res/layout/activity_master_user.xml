@@ -50,8 +50,16 @@
             android:inputType="textPassword"/>
 
         <Button
+            android:id="@+id/hakakses"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textColor="#FF0000"
             android:layout_below="@+id/EdPassword"
-            android:layout_width="130dp"
+            android:text="Hak Akses" />
+
+        <Button
+            android:layout_below="@+id/hakakses"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
@@ -60,11 +68,11 @@
             android:id="@+id/buttonAdd" />
 
         <Button
-            android:layout_below="@+id/EdPassword"
-            android:layout_width="130dp"
+            android:layout_below="@+id/hakakses"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="150dp"
+            android:layout_marginLeft="148dp"
             android:layout_marginTop="10dp"
             android:background="#FFFFFF"
             android:text="Tutup"

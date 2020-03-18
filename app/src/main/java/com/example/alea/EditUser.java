@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import androidx.appcompat.app.AlertDialog;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -39,7 +43,8 @@ public class EditUser extends AppCompatActivity {
     private EditText editTextPass;
     private EditText editTextCoba;
     private Button buttonUpdate;
-    private Button buttonData;
+    private Button buttonTutup;
+    CheckBox password;
 
     String server_url, name,result,server_edit;
     ProgressDialog pd;
@@ -52,33 +57,34 @@ public class EditUser extends AppCompatActivity {
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextPass = (EditText) findViewById(R.id.editTextPass);
-        editTextCoba = (EditText) findViewById(R.id.editTextCoba);
-        buttonUpdate = (Button) findViewById(R.id.buttonUpdate);
-        buttonData = (Button) findViewById(R.id.buttonData);
+        buttonUpdate = (Button) findViewById(R.id.btnSave);
+        buttonTutup = (Button) findViewById(R.id.btnTutup);
+        password = (CheckBox) findViewById(R.id.checkBox1);
         pd = new ProgressDialog(this);
 
-        buttonData.setOnClickListener(new View.OnClickListener() {
+        password.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
             @Override
-            public void onClick(View v) {
-                server_url = "https://aldry.000webhostapp.com/showuser.php";
-                String name = editTextName.getText().toString().trim();
-                if (!name.isEmpty()) {
-                    AmbilData(name);
-                } else if (name.isEmpty()) {
-                    editTextName.setError("username tidak boleh kosong");
-                    editTextName.requestFocus();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // TODO Auto-generated method stub
+                if (!isChecked) {
+                    editTextPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    editTextName.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    editTextPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    editTextName.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
 
             }
         });
 
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+        buttonTutup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                server_edit = "https://aldry.000webhostapp.com/insertuser.php";
-                String status = editTextCoba.getText().toString().trim();
-                EditData(status);
+                Intent explicit = new Intent(EditUser.this, user.class);
+                startActivity(explicit);
             }
+
         });
     }
     private void AmbilData(final String name) {
