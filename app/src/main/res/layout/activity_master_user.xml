@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFFFFF"
+            android:textColor="#FFFFFF"
             android:layout_below="@+id/txUser"
             android:id="@+id/EdUserName" />
 
@@ -46,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFFFFF"
+            android:textColor="#FFFFFF"
             android:id="@+id/EdPassword"
             android:inputType="textPassword"/>
 

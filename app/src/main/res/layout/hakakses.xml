@@ -11,8 +11,7 @@
             android:title="Menu Pembelian"/>
         <item android:id="@+id/menu_jual"
             android:title="Menu Penjualan"/>
+        <item android:id="@+id/menu_koreksi"
+            android:title="Menu Koreksi Stok"/>
     </group>
-
-
-
 </menu>
