@@ -15,6 +15,7 @@ public class Dashboard extends AppCompatActivity {
     private TextView txuser;
     private ImageView imageuser;
     private RelativeLayout layoutuser;
+    String name,pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +23,15 @@ public class Dashboard extends AppCompatActivity {
         txuser = (TextView) findViewById(R.id.txUser);
         imageuser = (ImageView) findViewById(R.id.imageuser);
         layoutuser = (RelativeLayout) findViewById(R.id.layoutuser);
+        name = (getIntent().getStringExtra("name"));
+        pass = (getIntent().getStringExtra("pass"));
 
         txuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicit = new Intent(Dashboard.this, user.class);
                 startActivity(explicit);
+                KirimData();
             }
         });
 
@@ -36,6 +40,7 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View v) {
                 Intent explicit = new Intent(Dashboard.this, user.class);
                 startActivity(explicit);
+                KirimData();
             }
         });
 
@@ -44,7 +49,15 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View v) {
                 Intent explicit = new Intent(Dashboard.this, user.class);
                 startActivity(explicit);
+                KirimData();
             }
         });
+    }
+
+    private void KirimData() {
+        Intent intent = new Intent(Dashboard.this, user.class);
+        intent.putExtra("name", name.trim());
+        intent.putExtra("pass", pass.trim());
+        startActivity(intent);
     }
 }

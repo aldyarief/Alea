@@ -114,6 +114,7 @@ public class Login extends AppCompatActivity {
                             if (hasil.equalsIgnoreCase("true")) {
                                 Intent explicit = new Intent(Login.this, Dashboard.class);
                                 startActivity(explicit);
+                                KirimData();
                                 requestQueue.stop();
                             } else {
                                 Toast.makeText(Login.this, pesan, Toast.LENGTH_SHORT).show();
@@ -153,6 +154,13 @@ public class Login extends AppCompatActivity {
     private void hideDialog() {
         if (pd.isShowing())
             pd.dismiss();
+    }
+
+    private void KirimData() {
+        Intent intent = new Intent(Login.this, Dashboard.class);
+        intent.putExtra("name", textname.getText().toString().trim());
+        intent.putExtra("pass", textpass.getText().toString().trim());
+        startActivity(intent);
     }
 }
 

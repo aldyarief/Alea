@@ -13,6 +13,7 @@ public class user extends AppCompatActivity {
     private TextView txedituser,txtambahuser;
     private ImageView imagetambahuser,imageedituser;
     private RelativeLayout layouttambahuser,layoutedituser;
+    String name,pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,8 @@ public class user extends AppCompatActivity {
         txedituser = (TextView) findViewById(R.id.txedituser);
         imageedituser = (ImageView) findViewById(R.id.imageedituser);
         layoutedituser = (RelativeLayout) findViewById(R.id.layoutedituser);
+        name = (getIntent().getStringExtra("name"));
+        pass = (getIntent().getStringExtra("pass"));
 
         txtambahuser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +57,7 @@ public class user extends AppCompatActivity {
             public void onClick(View v) {
                 Intent explicit = new Intent(user.this, EditUser.class);
                 startActivity(explicit);
+                KirimData();
             }
         });
 
@@ -62,6 +66,7 @@ public class user extends AppCompatActivity {
             public void onClick(View v) {
                 Intent explicit = new Intent(user.this, EditUser.class);
                 startActivity(explicit);
+                KirimData();
             }
         });
 
@@ -70,10 +75,16 @@ public class user extends AppCompatActivity {
             public void onClick(View v) {
                 Intent explicit = new Intent(user.this, EditUser.class);
                 startActivity(explicit);
+                KirimData();
             }
         });
 
+    }
 
-
+    private void KirimData() {
+        Intent intent = new Intent(user.this, EditUser.class);
+        intent.putExtra("name", name.trim());
+        intent.putExtra("pass", pass.trim());
+        startActivity(intent);
     }
 }

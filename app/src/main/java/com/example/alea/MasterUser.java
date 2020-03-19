@@ -9,9 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,17 +22,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.annotation.SuppressLint;
 
 public class MasterUser extends AppCompatActivity {
     Button btntambah,btntutup,hakakses;
     EditText Eduser,EdPass;
-    String server_url;
+    String server_url,name;
     ProgressDialog pd;
 
     @Override
@@ -48,6 +42,7 @@ public class MasterUser extends AppCompatActivity {
         hakakses = (Button) findViewById(R.id.hakakses);
         server_url = "https://aldry.000webhostapp.com/insertuser.php";
         pd = new ProgressDialog(this);
+
 
         btntambah.setOnClickListener(new View.OnClickListener() {
             @Override
