@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.CheckBox;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,10 +27,12 @@ import android.widget.PopupMenu;
 import android.annotation.SuppressLint;
 
 public class MasterUser extends AppCompatActivity {
-    Button btntambah,btntutup,hakakses;
+    Button btntambah,btntutup;
     EditText Eduser,EdPass;
     String server_url,name;
     ProgressDialog pd;
+    String hakuser,hakbarang,hakbeli,hakjual,hakstok,haklaporan;
+    CheckBox user,barang,beli,jual,koreksi,laporan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,12 @@ public class MasterUser extends AppCompatActivity {
         EdPass = (EditText) findViewById(R.id.EdPassword);
         btntambah = (Button) findViewById(R.id.buttonAdd);
         btntutup = (Button) findViewById(R.id.buttonClose);
-        hakakses = (Button) findViewById(R.id.hakakses);
+        user=(CheckBox)findViewById(R.id.checkbox_user);
+        barang=(CheckBox)findViewById(R.id.checkbox_barang);
+        beli=(CheckBox)findViewById(R.id.checkbox_beli);
+        jual=(CheckBox)findViewById(R.id.checkbox_jual);
+        koreksi=(CheckBox)findViewById(R.id.checkbox_stok);
+        laporan=(CheckBox)findViewById(R.id.checkbox_laporan);
         server_url = "https://aldry.000webhostapp.com/insertuser.php";
         pd = new ProgressDialog(this);
 
@@ -50,8 +58,19 @@ public class MasterUser extends AppCompatActivity {
                 String name = Eduser.getText().toString().trim();
                 String pass = EdPass.getText().toString().trim();
 
+                if(user.isChecked() && barang.isChecked() && beli.isChecked() && jual.isChecked()
+                        && koreksi.isChecked() && laporan.isChecked()){
+
+                    hakuser="true";
+                    hakbarang ="true";
+                    hakbeli="true";
+                    hakjual ="true";
+                    hakstok="true";
+                    haklaporan ="true";
+                }
+
                 if (!name.isEmpty() && !pass.isEmpty() ) {
-                    simpanData(name,pass);
+                    simpanData(name,pass,hakuser,hakbarang,hakbeli,hakjual,hakstok,haklaporan);
                 } else if (name.isEmpty()) {
                     Eduser.setError("username tidak boleh kosong");
                     Eduser.requestFocus();
@@ -62,12 +81,6 @@ public class MasterUser extends AppCompatActivity {
             }
         });
 
-        hakakses.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            showPopupMenu(v);
-            }
-        });
 
         btntutup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +90,10 @@ public class MasterUser extends AppCompatActivity {
             }
 
         });
+
     }
-    private void simpanData(final String name,final String pass) {
+    private void simpanData(final String name,final String pass,final String hakuser,final String hakbarang,
+                            final String hakbeli,final String hakjual,final String hakkoreksi,final String haklaporan) {
         final RequestQueue requestQueue = Volley.newRequestQueue(MasterUser.this);
 
         pd.setCancelable(false);
@@ -122,6 +137,12 @@ public class MasterUser extends AppCompatActivity {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("name", name);
                 param.put("pass", pass);
+                param.put("hakuser", hakuser);
+                param.put("hakbarang", hakbarang);
+                param.put("hakbeli", hakbeli);
+                param.put("hakjual", hakjual);
+                param.put("hakkoreksi", hakkoreksi);
+                param.put("haklaporan", haklaporan);
                 return param;
             }
         };
@@ -141,12 +162,4 @@ public class MasterUser extends AppCompatActivity {
             pd.dismiss();
     }
 
-
-    @SuppressLint("ResourceType")
-    private void showPopupMenu(View v) {
-        PopupMenu popupMenu = new PopupMenu(this, v);
-        //menampilkan layout menu_popup.xml
-        popupMenu.inflate(R.layout.hakakses);
-        popupMenu.show();
-    }
 }
