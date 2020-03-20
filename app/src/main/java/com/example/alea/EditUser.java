@@ -52,7 +52,7 @@ public class EditUser extends AppCompatActivity {
         pd = new ProgressDialog(this);
         editTextPass.setText(getIntent().getStringExtra("name"));
         editTextName.setText(getIntent().getStringExtra("pass"));
-        server_url = "https://aldry.000webhostapp.com/showuser.php";
+        server_url = "https://aldry.000webhostapp.com/edituser.php";
 
         ChkPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
