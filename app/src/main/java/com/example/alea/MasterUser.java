@@ -111,8 +111,9 @@ public class MasterUser extends AppCompatActivity {
                             JSONObject jObject = new JSONObject(response);
                             String pesan = jObject.getString("pesan");
                             String hasil = jObject.getString("result");
+                            String id = jObject.getString("user");
                             if (hasil.equalsIgnoreCase("true")) {
-                                Toast.makeText(MasterUser.this,pesan, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MasterUser.this,id, Toast.LENGTH_SHORT).show();
                                 requestQueue.stop();
                             } else {
                                 Toast.makeText(MasterUser.this, pesan, Toast.LENGTH_SHORT).show();

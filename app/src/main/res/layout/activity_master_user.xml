@@ -4,7 +4,6 @@
     android:layout_height="match_parent" android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="@drawable/back"
     android:paddingBottom="16dp" tools:context=".MasterUser">
 
     <RelativeLayout
@@ -23,14 +22,14 @@
             android:id="@+id/txUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:text="UserName" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="#000000"
+            android:textColor="#000000"
             android:layout_below="@+id/txUser"
             android:id="@+id/EdUserName" />
 
@@ -39,15 +38,15 @@
             android:layout_below="@+id/EdUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:text="Password" />
 
         <EditText
             android:layout_below="@+id/txPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="#000000"
+            android:textColor="#000000"
             android:id="@+id/EdPassword"
             android:inputType="textPassword"/>
 
@@ -70,7 +69,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="148dp"
             android:layout_marginTop="10dp"
-            android:background="#FFFFFF"
+            android:background="#FF0000"
             android:text="Tutup"
             android:id="@+id/buttonClose" />
 
@@ -85,23 +84,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Master User"
-                android:buttonTint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"/>
+                android:buttonTint="#000000"
+                android:textColor="#000000"
+                android:textColorHint="#000000"/>
             <CheckBox android:id="@+id/checkbox_barang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Master Barang"
-                android:buttonTint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"/>
+                android:buttonTint="#000000"
+                android:textColor="#000000"
+                android:textColorHint="#000000"/>
             <CheckBox android:id="@+id/checkbox_beli"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pembelian"
-                android:buttonTint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"/>
+                android:buttonTint="#000000"
+                android:textColor="#000000"
+                android:textColorHint="#000000"/>
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
@@ -116,23 +115,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Penjualan"
-                android:buttonTint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"/>
+                android:buttonTint="#000000"
+                android:textColor="#000000"
+                android:textColorHint="#000000"/>
             <CheckBox android:id="@+id/checkbox_stok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Koreksi Stok"
-                android:buttonTint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"/>
+                android:buttonTint="#000000"
+                android:textColor="#000000"
+                android:textColorHint="#000000"/>
             <CheckBox android:id="@+id/checkbox_laporan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Laporan"
-                android:buttonTint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"/>
+                android:buttonTint="#000000"
+                android:textColor="#000000"
+                android:textColorHint="#000000"/>
         </LinearLayout>
 
 

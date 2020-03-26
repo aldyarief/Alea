@@ -4,7 +4,6 @@
     android:layout_height="match_parent" android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="@drawable/back"
     android:paddingBottom="16dp" tools:context=".EditUser">
 
     <RelativeLayout
@@ -23,12 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTextName"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:hint="Password Lama"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#000000"
         android:inputType="textPassword"
         android:drawableLeft="@drawable/ic_password"
-        android:backgroundTint="#FFFFFF"/>
+        android:backgroundTint="#000000"/>
 
 
     <EditText
@@ -38,10 +37,10 @@
         android:layout_below="@id/editTextName"
         android:drawableLeft="@drawable/ic_password"
         android:hint="Password Baru"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#FFFFFF"
+        android:textColorHint="#000000"
+        android:textColor="#000000"
         android:inputType="textPassword"
-        android:backgroundTint="#FFFFFF"/>
+        android:backgroundTint="#000000"/>
 
     <CheckBox
         android:id="@+id/checkBox1"
@@ -52,9 +51,9 @@
         android:layout_marginTop="24dp"
         android:layout_marginRight="30dp"
         android:text="Show Password"
-        android:buttonTint="#FFFFFF"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        android:buttonTint="#000000"
+        android:textColor="#000000"
+        android:textColorHint="#000000" />
 
         <Button
             android:id="@+id/btnSave"
@@ -73,7 +72,7 @@
             android:layout_marginLeft="148dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:background="#FFFFFF"
+            android:background="#FF0000"
             android:layout_below="@+id/checkBox1" />
     </RelativeLayout>
 

@@ -4,7 +4,6 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
     tools:context=".Login">
 
     <RelativeLayout
@@ -25,9 +24,9 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_user"
             android:hint="Username"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:textColor="#000000"
+            android:backgroundTint="#000000"
+            android:textColorHint="#000000"
             tools:layout_editor_absoluteX="179dp"
             tools:layout_editor_absoluteY="124dp" />
 
@@ -39,9 +38,9 @@
             android:drawableLeft="@drawable/ic_password"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:backgroundTint="#FFFFFF" />
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:backgroundTint="#000000" />
             tools:layout_editor_absoluteX="179dp"
             tools:layout_editor_absoluteY="124dp" />
 
@@ -54,9 +53,9 @@
             android:layout_marginTop="24dp"
             android:layout_marginRight="30dp"
             android:text="Show Password"
-            android:buttonTint="#FFFFFF"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:buttonTint="#000000"
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
 
         <Button
             android:id="@+id/btnLogin"
@@ -75,7 +74,7 @@
             android:layout_marginLeft="160dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:background="#FFFFFF"
+            android:background="#FF0000"
             android:layout_below="@+id/checkBox1" />
 
     </RelativeLayout>

@@ -125,6 +125,8 @@ public class EditUser extends AppCompatActivity {
                             if (hasil.equalsIgnoreCase("true")) {
                                 Toast.makeText(EditUser.this,"heiii", Toast.LENGTH_SHORT).show();
                                 requestQueue.stop();
+                                editTextPass.getText().clear();
+                                editTextName.getText().clear();
                             } else {
                                 Toast.makeText(EditUser.this, hasil, Toast.LENGTH_SHORT).show();
                                 requestQueue.stop();
