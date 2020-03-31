@@ -12,12 +12,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.widget.Toast;
 
 public class Dashboard extends AppCompatActivity {
     private TextView txuser;
     private ImageView imageuser;
     private RelativeLayout layoutuser;
-    String name,pass;
+    String name,pass,user,barang,beli,jual,koreksi,laporan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,31 +28,49 @@ public class Dashboard extends AppCompatActivity {
         layoutuser = (RelativeLayout) findViewById(R.id.layoutuser);
         name = (getIntent().getStringExtra("name"));
         pass = (getIntent().getStringExtra("pass"));
+        user = (getIntent().getStringExtra("user"));
+        barang = (getIntent().getStringExtra("barang"));
+        beli = (getIntent().getStringExtra("beli"));
+        jual = (getIntent().getStringExtra("jual"));
+        koreksi = (getIntent().getStringExtra("koreksi"));
+        laporan = (getIntent().getStringExtra("laporan"));
 
         txuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent explicit = new Intent(Dashboard.this, user.class);
-                startActivity(explicit);
-                KirimData();
+                if (user.equalsIgnoreCase("1")) {
+                    Intent explicit = new Intent(Dashboard.this, user.class);
+                    startActivity(explicit);
+                    KirimData();
+                }else{
+                    Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         imageuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent explicit = new Intent(Dashboard.this, user.class);
-                startActivity(explicit);
-                KirimData();
+                if (user.equalsIgnoreCase("1")) {
+                    Intent explicit = new Intent(Dashboard.this, user.class);
+                    startActivity(explicit);
+                    KirimData();
+                }else{
+                    Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         layoutuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent explicit = new Intent(Dashboard.this, user.class);
-                startActivity(explicit);
-                KirimData();
+                if (user.equalsIgnoreCase("1")) {
+                    Intent explicit = new Intent(Dashboard.this, user.class);
+                    startActivity(explicit);
+                    KirimData();
+                }else{
+                    Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -67,18 +86,17 @@ public class Dashboard extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Anda Yakin Keluar?");
+
         builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //if user pressed "yes", then he is allowed to exit from application
                 dialog.dismiss();
-                finish();
+            finish();
             }
         });
         builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //if user select "No", just cancel this dialog and continue with app
                 dialog.dismiss();
             }
         });

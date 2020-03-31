@@ -58,15 +58,40 @@ public class MasterUser extends AppCompatActivity {
                 String name = Eduser.getText().toString().trim();
                 String pass = EdPass.getText().toString().trim();
 
-                if(user.isChecked() && barang.isChecked() && beli.isChecked() && jual.isChecked()
-                        && koreksi.isChecked() && laporan.isChecked()){
-
+                if(user.isChecked()){
                     hakuser="true";
+                } else {
+                    hakuser="false";
+                }
+
+                if(barang.isChecked()){
                     hakbarang ="true";
+                } else {
+                    hakbarang="false";
+                }
+
+                if(beli.isChecked()){
                     hakbeli="true";
+                } else {
+                    hakbeli="false";
+                }
+
+                if(jual.isChecked()){
                     hakjual ="true";
+                } else {
+                    hakjual="false";
+                }
+
+                if(koreksi.isChecked()){
                     hakstok="true";
+                } else {
+                    hakstok="false";
+                }
+
+                if(laporan.isChecked()){
                     haklaporan ="true";
+                } else {
+                    haklaporan ="false";
                 }
 
                 if (!name.isEmpty() && !pass.isEmpty() ) {
@@ -111,10 +136,12 @@ public class MasterUser extends AppCompatActivity {
                             JSONObject jObject = new JSONObject(response);
                             String pesan = jObject.getString("pesan");
                             String hasil = jObject.getString("result");
-                            String id = jObject.getString("user");
                             if (hasil.equalsIgnoreCase("true")) {
                                 Toast.makeText(MasterUser.this,pesan, Toast.LENGTH_SHORT).show();
                                 requestQueue.stop();
+                                Eduser.getText().clear();
+                                EdPass.getText().clear();
+
                             } else {
                                 Toast.makeText(MasterUser.this, pesan, Toast.LENGTH_SHORT).show();
                                 requestQueue.stop();

@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
     Button button,button2;
     CheckBox password;
     private EditText textname,textpass;
-    String server_url;
+    String server_url,user,barang,beli,jual,koreksi,laporan;
     ProgressDialog pd;
     private Button imb_popupMenu;
 
@@ -111,6 +111,12 @@ public class Login extends AppCompatActivity {
                             JSONObject jObject = new JSONObject(response);
                             String pesan = jObject.getString("pesan");
                             String hasil = jObject.getString("result");
+                            user = jObject.getString("user");
+                            barang = jObject.getString("barang");
+                            beli = jObject.getString("beli");
+                            jual = jObject.getString("jual");
+                            koreksi = jObject.getString("koreksi");
+                            laporan = jObject.getString("laporan");
                             if (hasil.equalsIgnoreCase("true")) {
                                 Intent explicit = new Intent(Login.this, Dashboard.class);
                                 startActivity(explicit);
@@ -160,6 +166,12 @@ public class Login extends AppCompatActivity {
         Intent intent = new Intent(Login.this, Dashboard.class);
         intent.putExtra("name", textname.getText().toString().trim());
         intent.putExtra("pass", textpass.getText().toString().trim());
+        intent.putExtra("user", user);
+        intent.putExtra("barang", barang);
+        intent.putExtra("beli", beli);
+        intent.putExtra("jual", jual);
+        intent.putExtra("koreksi", koreksi);
+        intent.putExtra("laporan", laporan);
         startActivity(intent);
     }
 }
