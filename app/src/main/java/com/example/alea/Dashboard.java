@@ -15,9 +15,9 @@ import android.content.DialogInterface;
 import android.widget.Toast;
 
 public class Dashboard extends AppCompatActivity {
-    private TextView txuser;
-    private ImageView imageuser;
-    private RelativeLayout layoutuser;
+    private TextView txuser,txbarang;
+    private ImageView imageuser,imagebarang;
+    private RelativeLayout layoutuser,layoutbarang;
     String name,pass,user,barang,beli,jual,koreksi,laporan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,9 @@ public class Dashboard extends AppCompatActivity {
         txuser = (TextView) findViewById(R.id.txUser);
         imageuser = (ImageView) findViewById(R.id.imageuser);
         layoutuser = (RelativeLayout) findViewById(R.id.layoutuser);
+        txbarang = (TextView) findViewById(R.id.txbarang);
+        imagebarang = (ImageView) findViewById(R.id.imagebarang);
+        layoutbarang = (RelativeLayout) findViewById(R.id.layoutbarang);
         name = (getIntent().getStringExtra("name"));
         pass = (getIntent().getStringExtra("pass"));
         user = (getIntent().getStringExtra("user"));
@@ -68,6 +71,43 @@ public class Dashboard extends AppCompatActivity {
                     Intent explicit = new Intent(Dashboard.this, user.class);
                     startActivity(explicit);
                     KirimData();
+                }else{
+                    Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+        txbarang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (barang.equalsIgnoreCase("1")) {
+                    Intent explicit = new Intent(Dashboard.this, Barang.class);
+                    startActivity(explicit);
+                }else{
+                    Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        imagebarang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (barang.equalsIgnoreCase("1")) {
+                    Intent explicit = new Intent(Dashboard.this, Barang.class);
+                    startActivity(explicit);
+                }else{
+                    Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        layoutbarang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (barang.equalsIgnoreCase("1")) {
+                    Intent explicit = new Intent(Dashboard.this, Barang.class);
+                    startActivity(explicit);
                 }else{
                     Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
                 }
