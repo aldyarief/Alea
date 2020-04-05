@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent" android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp" tools:context=".KategoriBarang">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/transparent"
+        android:elevation="4dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextName"
+            android:textColor="#000000"
+            android:hint="Kategori Barang"
+            android:textColorHint="#000000"
+            android:backgroundTint="#000000"/>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#e8e821"
+            android:layout_below="@+id/editTextName" />
+        <Button
+            android:id="@+id/btnTutup"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Keluar"
+            android:layout_marginLeft="148dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#FF0000"
+            android:layout_below="@+id/editTextName" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

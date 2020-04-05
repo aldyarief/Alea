@@ -18,17 +18,17 @@
                 android:padding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/layouttambahkategori">
+                android:id="@+id/layoutkategori">
                 <ImageView
-                    android:id="@+id/imagetambahkategori"
+                    android:id="@+id/imagekategori"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@mipmap/ic_kategori"
                     android:layout_marginRight="5dp"/>
 
                 <TextView
-                    android:id="@+id/txtambahkategori"
-                    android:layout_toRightOf="@+id/imagetambahkategori"
+                    android:id="@+id/txkategori"
+                    android:layout_toRightOf="@+id/imagekategori"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
