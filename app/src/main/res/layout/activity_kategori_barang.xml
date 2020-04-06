@@ -25,6 +25,7 @@
             android:textColor="#000000"
             android:hint="Kategori Barang"
             android:textColorHint="#000000"
+            android:inputType="textCapWords"
             android:backgroundTint="#000000"/>
 
         <Button

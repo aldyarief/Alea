@@ -18,7 +18,7 @@ public class Dashboard extends AppCompatActivity {
     private TextView txuser,txbarang;
     private ImageView imageuser,imagebarang;
     private RelativeLayout layoutuser,layoutbarang;
-    String name,pass,user,barang,beli,jual,koreksi,laporan;
+    String name,pass,userid,user,barang,beli,jual,koreksi,laporan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +31,7 @@ public class Dashboard extends AppCompatActivity {
         layoutbarang = (RelativeLayout) findViewById(R.id.layoutbarang);
         name = (getIntent().getStringExtra("name"));
         pass = (getIntent().getStringExtra("pass"));
+        userid = (getIntent().getStringExtra("userid"));
         user = (getIntent().getStringExtra("user"));
         barang = (getIntent().getStringExtra("barang"));
         beli = (getIntent().getStringExtra("beli"));
@@ -42,8 +43,6 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (user.equalsIgnoreCase("1")) {
-                    Intent explicit = new Intent(Dashboard.this, user.class);
-                    startActivity(explicit);
                     KirimData();
                 }else{
                     Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
@@ -55,8 +54,6 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (user.equalsIgnoreCase("1")) {
-                    Intent explicit = new Intent(Dashboard.this, user.class);
-                    startActivity(explicit);
                     KirimData();
                 }else{
                     Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
@@ -68,8 +65,6 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (user.equalsIgnoreCase("1")) {
-                    Intent explicit = new Intent(Dashboard.this, user.class);
-                    startActivity(explicit);
                     KirimData();
                 }else{
                     Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
@@ -82,8 +77,8 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (barang.equalsIgnoreCase("1")) {
-                    Intent explicit = new Intent(Dashboard.this, Barang.class);
-                    startActivity(explicit);
+                    Kirim();
+
                 }else{
                     Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
                 }
@@ -94,8 +89,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (barang.equalsIgnoreCase("1")) {
-                    Intent explicit = new Intent(Dashboard.this, Barang.class);
-                    startActivity(explicit);
+                    Kirim();
                 }else{
                     Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
                 }
@@ -106,8 +100,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (barang.equalsIgnoreCase("1")) {
-                    Intent explicit = new Intent(Dashboard.this, Barang.class);
-                    startActivity(explicit);
+                    Kirim();
                 }else{
                     Toast.makeText(Dashboard.this, "Anda Tidak Memiliki Akses", Toast.LENGTH_SHORT).show();
                 }
@@ -119,6 +112,13 @@ public class Dashboard extends AppCompatActivity {
         Intent intent = new Intent(Dashboard.this, user.class);
         intent.putExtra("name", name.trim());
         intent.putExtra("pass", pass.trim());
+        intent.putExtra("userid", userid.trim());
+        startActivity(intent);
+    }
+
+    private void Kirim() {
+        Intent intent = new Intent(Dashboard.this, Barang.class);
+        intent.putExtra("userid", userid.trim());
         startActivity(intent);
     }
 

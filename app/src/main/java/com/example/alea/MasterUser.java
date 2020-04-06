@@ -31,7 +31,7 @@ public class MasterUser extends AppCompatActivity {
     EditText Eduser,EdPass;
     String server_url,name;
     ProgressDialog pd;
-    String hakuser,hakbarang,hakbeli,hakjual,hakstok,haklaporan;
+    String hakuser,hakbarang,hakbeli,hakjual,hakstok,haklaporan,userid;
     CheckBox user,barang,beli,jual,koreksi,laporan;
 
     @Override
@@ -48,6 +48,7 @@ public class MasterUser extends AppCompatActivity {
         jual=(CheckBox)findViewById(R.id.checkbox_jual);
         koreksi=(CheckBox)findViewById(R.id.checkbox_stok);
         laporan=(CheckBox)findViewById(R.id.checkbox_laporan);
+        userid = (getIntent().getStringExtra("userid"));
         server_url = "https://aldry.000webhostapp.com/insertuser.php";
         pd = new ProgressDialog(this);
 
@@ -95,7 +96,7 @@ public class MasterUser extends AppCompatActivity {
                 }
 
                 if (!name.isEmpty() && !pass.isEmpty() ) {
-                    simpanData(name,pass,hakuser,hakbarang,hakbeli,hakjual,hakstok,haklaporan);
+                    simpanData(name,pass,hakuser,hakbarang,hakbeli,hakjual,hakstok,haklaporan,userid);
                 } else if (name.isEmpty()) {
                     Eduser.setError("username tidak boleh kosong");
                     Eduser.requestFocus();
@@ -118,7 +119,8 @@ public class MasterUser extends AppCompatActivity {
 
     }
     private void simpanData(final String name,final String pass,final String hakuser,final String hakbarang,
-                            final String hakbeli,final String hakjual,final String hakkoreksi,final String haklaporan) {
+                            final String hakbeli,final String hakjual,final String hakkoreksi,
+                            final String haklaporan,final String userid) {
         final RequestQueue requestQueue = Volley.newRequestQueue(MasterUser.this);
 
         pd.setCancelable(false);
@@ -171,6 +173,7 @@ public class MasterUser extends AppCompatActivity {
                 param.put("hakjual", hakjual);
                 param.put("hakkoreksi", hakkoreksi);
                 param.put("haklaporan", haklaporan);
+                param.put("userid", userid);
                 return param;
             }
         };

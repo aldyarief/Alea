@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
     Button button,button2;
     CheckBox password;
     private EditText textname,textpass;
-    String server_url,user,barang,beli,jual,koreksi,laporan;
+    String server_url,userid,user,barang,beli,jual,koreksi,laporan;
     ProgressDialog pd;
     private Button imb_popupMenu;
 
@@ -111,6 +111,7 @@ public class Login extends AppCompatActivity {
                             JSONObject jObject = new JSONObject(response);
                             String pesan = jObject.getString("pesan");
                             String hasil = jObject.getString("result");
+                            userid = jObject.getString("userid");
                             user = jObject.getString("user");
                             barang = jObject.getString("barang");
                             beli = jObject.getString("beli");
@@ -118,10 +119,10 @@ public class Login extends AppCompatActivity {
                             koreksi = jObject.getString("koreksi");
                             laporan = jObject.getString("laporan");
                             if (hasil.equalsIgnoreCase("true")) {
-                                Intent explicit = new Intent(Login.this, Dashboard.class);
-                                startActivity(explicit);
                                 KirimData();
                                 requestQueue.stop();
+                                textname.getText().clear();
+                                textpass.getText().clear();
                             } else {
                                 Toast.makeText(Login.this, pesan, Toast.LENGTH_SHORT).show();
                                 requestQueue.stop();
@@ -166,6 +167,7 @@ public class Login extends AppCompatActivity {
         Intent intent = new Intent(Login.this, Dashboard.class);
         intent.putExtra("name", textname.getText().toString().trim());
         intent.putExtra("pass", textpass.getText().toString().trim());
+        intent.putExtra("userid", userid);
         intent.putExtra("user", user);
         intent.putExtra("barang", barang);
         intent.putExtra("beli", beli);

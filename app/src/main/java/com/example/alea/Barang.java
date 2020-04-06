@@ -13,6 +13,7 @@ public class Barang extends AppCompatActivity {
     private TextView txkategori;
     private ImageView imagekategori;
     private RelativeLayout layoutkategori;
+    String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,30 +21,35 @@ public class Barang extends AppCompatActivity {
         txkategori = (TextView) findViewById(R.id.txedituser);
         imagekategori = (ImageView) findViewById(R.id.imagekategori);
         layoutkategori = (RelativeLayout) findViewById(R.id.layoutkategori);
+        userid = (getIntent().getStringExtra("userid"));
 
         txkategori.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent explicit = new Intent(Barang.this, KategoriBarang.class);
-                startActivity(explicit);
+                Kirim();
             }
         });
 
         imagekategori.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent explicit = new Intent(Barang.this, KategoriBarang.class);
-                startActivity(explicit);
+                Kirim();
             }
         });
 
         layoutkategori.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent explicit = new Intent(Barang.this, KategoriBarang.class);
-                startActivity(explicit);
+                Kirim();
             }
         });
 
     }
+
+    private void Kirim() {
+        Intent intent = new Intent(Barang.this, KategoriBarang.class);
+        intent.putExtra("userid", userid.trim());
+        startActivity(intent);
+    }
+
 }
