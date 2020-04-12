@@ -44,17 +44,17 @@
                 android:padding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/layoutbar">
+                android:id="@+id/layoutmasbar">
                 <ImageView
-                    android:id="@+id/imageedituser"
+                    android:id="@+id/imagemasbar"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@mipmap/ic_barang2"
                     android:layout_marginRight="5dp"/>
 
                 <TextView
-                    android:id="@+id/txedituser"
-                    android:layout_toRightOf="@+id/imageedituser"
+                    android:id="@+id/txmasbar"
+                    android:layout_toRightOf="@+id/imagemasbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"

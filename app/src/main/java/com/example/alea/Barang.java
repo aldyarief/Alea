@@ -18,7 +18,7 @@ public class Barang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barang);
-        txkategori = (TextView) findViewById(R.id.txedituser);
+        txkategori = (TextView) findViewById(R.id.txkategori);
         imagekategori = (ImageView) findViewById(R.id.imagekategori);
         layoutkategori = (RelativeLayout) findViewById(R.id.layoutkategori);
         userid = (getIntent().getStringExtra("userid"));
@@ -29,21 +29,18 @@ public class Barang extends AppCompatActivity {
                 Kirim();
             }
         });
-
         imagekategori.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Kirim();
             }
         });
-
         layoutkategori.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Kirim();
             }
         });
-
     }
 
     private void Kirim() {
