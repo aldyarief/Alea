@@ -100,7 +100,7 @@ public class MasterBarang extends AppCompatActivity {
         }
 
         //Setting adapter to show the items in the spinner
-        spinnerKategori.setAdapter(new ArrayAdapter<String>(MasterBarang.this, android.R.layout.simple_spinner_dropdown_item, kategori));
+        spinnerKategori.setAdapter(new ArrayAdapter<String>(MasterBarang.this, android.R.layout.simple_list_item_1, kategori));
     }
 
 
