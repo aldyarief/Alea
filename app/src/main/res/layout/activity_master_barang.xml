@@ -5,12 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".MasterBarang">
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="fill_parent"
+
+    <TextView
+        android:id="@+id/katbar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true" />
+        android:text="Kategori Barang" />
+    <Spinner
+        android:padding="20dp"
+        android:id="@+id/Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/katbar"></Spinner>
 
 
 </RelativeLayout>

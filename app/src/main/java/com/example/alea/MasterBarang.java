@@ -1,12 +1,10 @@
 package com.example.alea;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,18 +27,21 @@ import java.util.List;
 
 public class MasterBarang extends AppCompatActivity {
     ProgressDialog pd;
-    String server_url,name;
-    Spinner spinnerSiswa;
-    JSONArray JsonArraySiswa = null;
-    List<String> valueIdSiswa = new ArrayList<String>();
-    List<String> valueNamaSiswa = new ArrayList<String>();
+    String server_url,data;
+    Spinner spinnerKategori;
+    String JSON_ARRAY = "data";
+    private ArrayList<String> kategori;
+    private JSONArray result;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_barang);
         pd = new ProgressDialog(this);
-        spinnerSiswa = (Spinner) findViewById(R.id.spinner1);
+        spinnerKategori = (Spinner) findViewById(R.id.Spinner);
+        server_url = "https://aldry.000webhostapp.com/showkategori.php";
+        kategori = new ArrayList<String>();
         AmbilData();
     }
 
@@ -57,20 +58,13 @@ public class MasterBarang extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.d("response", response.toString());
                         hideDialog();
+                        JSONObject j = null;
 
                         try {
-                            JSONObject jObject = new JSONObject(response);
-                            JsonArraySiswa = jObject.getJSONArray("values");
-                            String pesan = jObject.getString("pesan");
-                            String hasil = jObject.getString("result");
-                            
-                            if (hasil.equalsIgnoreCase("true")) {
-                                Toast.makeText(MasterBarang.this,pesan, Toast.LENGTH_SHORT).show();
-                                requestQueue.stop();
-                            } else {
-                                Toast.makeText(MasterBarang.this, pesan, Toast.LENGTH_SHORT).show();
-                                requestQueue.stop();
-                            }
+                            j = new JSONObject(response);
+                            result = j.getJSONArray("data");
+                            getKategori(result);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(MasterBarang.this, "Error JSON", Toast.LENGTH_SHORT).show();
@@ -86,12 +80,27 @@ public class MasterBarang extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String, String>();
-                param.put("name", name);
                 return param;
             }
         };
 
         requestQueue.add(stringRequest);
+    }
+
+
+    private void getKategori(JSONArray j){
+        //Traversing through all the items in the json array
+        for(int i=0;i<j.length();i++){
+            try {
+                JSONObject json = j.getJSONObject(i);
+                kategori.add(json.getString("kategori"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //Setting adapter to show the items in the spinner
+        spinnerKategori.setAdapter(new ArrayAdapter<String>(MasterBarang.this, android.R.layout.simple_spinner_dropdown_item, kategori));
     }
 
 
