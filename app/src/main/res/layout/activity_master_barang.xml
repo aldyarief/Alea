@@ -5,18 +5,25 @@
     android:layout_height="match_parent"
     tools:context=".MasterBarang">
 
-
-    <TextView
-        android:id="@+id/katbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kategori Barang" />
-    <Spinner
-        android:padding="20dp"
-        android:id="@+id/Spinner"
+    <EditText
+        android:id="@+id/ednambar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/katbar"></Spinner>
+        android:hint="Nama Barang"/>
 
+    <TextView
+        android:id="@+id/txgroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kategori Barang"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/ednambar"/>
+
+    <Spinner
+        android:id="@+id/Spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txgroup">
+        </Spinner>
 
 </RelativeLayout>

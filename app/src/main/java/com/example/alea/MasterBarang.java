@@ -42,10 +42,10 @@ public class MasterBarang extends AppCompatActivity {
         spinnerKategori = (Spinner) findViewById(R.id.Spinner);
         server_url = "https://aldry.000webhostapp.com/showkategori.php";
         kategori = new ArrayList<String>();
-        AmbilData();
+        AmbilKategori();
     }
 
-    private void AmbilData() {
+    private void AmbilKategori() {
         final RequestQueue requestQueue = Volley.newRequestQueue(MasterBarang.this);
 
         pd.setCancelable(false);
@@ -100,9 +100,10 @@ public class MasterBarang extends AppCompatActivity {
         }
 
         //Setting adapter to show the items in the spinner
-        spinnerKategori.setAdapter(new ArrayAdapter<String>(MasterBarang.this, android.R.layout.simple_list_item_1, kategori));
+        ArrayAdapter dataAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, kategori);
+        dataAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
+        spinnerKategori.setAdapter(dataAdapter);
     }
-
 
     private void showDialog() {
         if (!pd.isShowing())
