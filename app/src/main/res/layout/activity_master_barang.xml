@@ -5,25 +5,65 @@
     android:layout_height="match_parent"
     tools:context=".MasterBarang">
 
-    <EditText
-        android:id="@+id/ednambar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nama Barang"/>
 
-    <TextView
-        android:id="@+id/txgroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kategori Barang"
-        android:layout_marginLeft="5dp"
-        android:layout_below="@+id/ednambar"/>
-
-    <Spinner
-        android:id="@+id/Spinner"
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txgroup">
-        </Spinner>
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/transparent"
+        android:elevation="4dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="20dp">
 
+        <TextView
+            android:id="@+id/txgroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kategori Barang"
+            android:layout_marginLeft="5dp"/>
+
+        <Spinner
+            android:id="@+id/Spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txgroup">
+            </Spinner>
+
+        <EditText
+            android:id="@+id/ednambar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Barang"
+            android:layout_below="@id/Spinner"/>
+        <EditText
+            android:id="@+id/edharbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Harga Barang"
+            android:inputType="numberDecimal"
+            android:layout_below="@id/ednambar"/>
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="#e8e821"
+            android:layout_below="@+id/edharbar" />
+        <Button
+            android:id="@+id/btnTutup"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Keluar"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#FF0000"
+            android:layout_below="@+id/edharbar" />
+
+    </RelativeLayout>
 </RelativeLayout>
