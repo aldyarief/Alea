@@ -37,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nama Barang"
+            android:inputType="textCapWords"
             android:layout_below="@id/Spinner"/>
         <EditText
             android:id="@+id/edharbar"
@@ -53,7 +54,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:background="#e8e821"
-            android:layout_below="@+id/edharbar" />
+            android:layout_below="@+id/imageView" />
         <Button
             android:id="@+id/btnTutup"
             android:layout_width="120dp"
@@ -63,7 +64,22 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="#FF0000"
-            android:layout_below="@+id/edharbar" />
+            android:layout_below="@+id/imageView" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Gambar"
+            android:layout_below="@+id/edharbar"
+            android:id="@+id/buttonChoose"
+            android:drawableRight="@android:drawable/ic_menu_gallery"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_below="@+id/buttonChoose"
+            android:id="@+id/imageView" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

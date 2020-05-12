@@ -29,6 +29,15 @@ import java.util.ArrayList;
 import java.util.List;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ImageView;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.net.Uri;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import android.provider.MediaStore;
 
 public class MasterBarang extends AppCompatActivity implements Spinner.OnItemSelectedListener {
     ProgressDialog pd;
@@ -36,11 +45,17 @@ public class MasterBarang extends AppCompatActivity implements Spinner.OnItemSel
     Spinner spinnerKategori;
     EditText Ednama,Edharga;
     String JSON_ARRAY = "data";
-    Button btnsave,btntutup;
+    Button btnsave,btntutup,buttonChoose;
     TextView DataID;
     private TextView textID;
     private ArrayList<String> kategori;
     private JSONArray result;
+    ImageView imageView;
+    EditText txt_name;
+    Bitmap bitmap, decoded;
+    int success;
+    int PICK_IMAGE_REQUEST = 1;
+    int bitmap_size = 60; // range 1 - 100
 
 
     @Override
@@ -55,11 +70,20 @@ public class MasterBarang extends AppCompatActivity implements Spinner.OnItemSel
         Ednama = (EditText) findViewById(R.id.ednambar);
         Edharga = (EditText) findViewById(R.id.edharbar);
         DataID = (TextView) findViewById(R.id.textID);
+        buttonChoose = (Button) findViewById(R.id.buttonChoose);
+        imageView = (ImageView) findViewById(R.id.imageView);
         userid = (getIntent().getStringExtra("userid"));
         server_url = "https://aldry.000webhostapp.com/showkategori.php";
         kategori = new ArrayList<String>();
         AmbilKategori();
         spinnerKategori.setOnItemSelectedListener(this);
+
+        buttonChoose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFileChooser();
+            }
+        });
 
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,6 +251,14 @@ public class MasterBarang extends AppCompatActivity implements Spinner.OnItemSel
         requestQueue.add(stringRequest);
     }
 
+
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
     private void showDialog() {
         if (!pd.isShowing())
             pd.show();
@@ -236,6 +268,62 @@ public class MasterBarang extends AppCompatActivity implements Spinner.OnItemSel
     private void hideDialog() {
         if (pd.isShowing())
             pd.dismiss();
+    }
+
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri filePath = data.getData();
+            try {
+                //mengambil fambar dari Gallery
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
+                setToImageView(getResizedBitmap(bitmap, 512));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void kosong() {
+        imageView.setImageResource(0);
+        txt_name.setText(null);
+    }
+
+    private void setToImageView(Bitmap bmp) {
+        //compress image
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
+        decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
+
+        //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
+        imageView.setImageBitmap(decoded);
+    }
+
+    // fungsi resize image
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
 }
