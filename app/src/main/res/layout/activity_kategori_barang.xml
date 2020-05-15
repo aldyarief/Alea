@@ -22,11 +22,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editTextName"
-            android:textColor="#000000"
+            android:textColor="#1E90FF"
             android:hint="Kategori Barang"
-            android:textColorHint="#000000"
+            android:textColorHint="#1E90FF"
             android:inputType="textCapWords"
-            android:backgroundTint="#000000"/>
+            android:backgroundTint="#1E90FF"/>
 
         <Button
             android:id="@+id/btnSave"
@@ -35,7 +35,7 @@
             android:text="Simpan"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:background="#e8e821"
+            android:background="#4169E1"
             android:layout_below="@+id/editTextName" />
         <Button
             android:id="@+id/btnTutup"
@@ -45,7 +45,7 @@
             android:layout_marginLeft="148dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:background="#FF0000"
+            android:background="#4169E1"
             android:layout_below="@+id/editTextName" />
     </RelativeLayout>
 
